@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-smooth-scroll": "^2.2.0",
+    "reboot.css": "^1.0.4"
+  }
+}

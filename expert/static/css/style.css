@@ -1,0 +1,56 @@
+@charset "UTF-8";
+html, body.top, h1.center-title {
+    margin: 0;
+    position: relative;
+}
+
+.top-cover {
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+}
+
+.center-title {
+    padding: calc(100vh / 2 - 2em) 0 0 0;
+    font-size: 2em;
+    text-align: center;
+}
+
+.center-title-link, a.center-title-link:hover {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.75em;
+    margin: calc(100vh / 2 - 1.75em) 0 0 0;
+}
+
+.main {
+    margin-top: 1.5em;
+    background-color: white;
+    color: black;
+    z-index: 3
+}
+
+.main h1, .main h2, .main h3, .main h4, .main h5, .main h6, .main p {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.cover {
+    display: table;
+    overflow: hidden;
+}
+
+.cover video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    filter: blur(8px);
+    margin: -8px;
+}

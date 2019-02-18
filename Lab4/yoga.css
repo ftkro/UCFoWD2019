@@ -1,0 +1,79 @@
+body {
+    background-color: #3F2860;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+#wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #3F2860;
+    background-color: #F5F5F5;
+    min-width: 420px;
+    max-width: 1280px;
+}
+
+header {
+    font-weight: bold;
+    background-color: #9BC1C2;
+    background-image: url("../Common/lilyheader.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 150px;
+}
+
+img {
+    padding: 2em;
+}
+
+nav {
+    text-align: center;
+    background-color: #DBE8E9;
+    padding: 1em;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+main {
+    padding: 0 3em 3em 3em;
+    display: block;
+}
+
+#mathero {
+    height: 300px;
+    background-image: url("../Common/yogamat.jpg");
+    background-size: 100% 100%;
+}
+
+#loungehero {
+    height: 300px;
+    background-image: url("../Common/yogalounge.jpg");
+    background-size: 100% 100%;
+}
+
+h1 {
+    padding-top: 50px;
+    padding-left: 2em;
+}
+
+footer {
+    font-size: small;
+    text-align: center;
+    font-style: italic;
+    background-color: #9BC1C2;
+    padding: 1em;
+}
+
+li {
+    font-size: 90%;
+}
+
+.align-right {
+    float: right;
+}
+
+.align-right::after {
+    clear: both;
+}

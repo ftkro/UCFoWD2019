@@ -1,0 +1,7 @@
+{
+  "require": {
+    "facebook/webdriver": "^1.6",
+    "phpoffice/phpword": "^0.16.0",
+    "ext-curl": "*"
+  }
+}
