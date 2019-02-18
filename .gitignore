@@ -6,3 +6,7 @@
 /expert/yarn.lock
 /expert/node_modules/
 /Compile/Credential.sh
+/Compile/node_modules/
+/Compile/yarn.lock
+/Common/
+/**/*.css

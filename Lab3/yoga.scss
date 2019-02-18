@@ -1,0 +1,47 @@
+$Purple: #3F2860;
+$CommonDir: '../Common/img/';
+body {
+  background-color: #F5F5F5;
+  color: $Purple;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+  font-weight: bold;
+  background-color: #9BC1C2;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-image: url(#{$CommonDir}lilyheader.jpg);
+}
+
+nav {
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  line-height: 400%;
+  text-indent: 1em;
+}
+
+footer {
+  font-size: small;
+  text-align: center;
+  font-style: italic;
+  background-color: #9BC1C2;
+}
+
+li {
+  font-size: 90%;
+}
+
+.align-right {
+  float: right;
+
+  &::after {
+    clear: both;
+  }
+}

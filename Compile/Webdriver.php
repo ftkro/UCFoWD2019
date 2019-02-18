@@ -125,6 +125,7 @@ class ScreenShot
         global $argv;
         $text = null;
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $phpWord->getCompatibility()->setOoxmlVersion(15);
         $section = $phpWord->addSection();
         if (count($this->CSSList) > 0) {
             foreach ($this->LinkList as $item) {
