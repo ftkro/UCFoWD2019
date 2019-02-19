@@ -42,9 +42,16 @@ function task_sass() {
     var srcGlob = process.argv[3] + process.argv[5] + '/**/*.+(scss)';
     var dstGlob = process.argv[3] + process.argv[5];
     return gulp.src(srcGlob)
-        .pipe(plugins.sass().on('error', plugins.sass.logError))
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.sass())
         .pipe(plugins.csscomb())
         .pipe(plugins.soften(4))
+        .pipe(gulp.dest(dstGlob))
+        .pipe(plugins.rename({
+            suffix: ".min",
+        }))
+        .pipe(plugins.minifyCss({advanced: false}))
+        .pipe(plugins.sourcemaps.write(dstGlob))
         .pipe(gulp.dest(dstGlob));
 }
 

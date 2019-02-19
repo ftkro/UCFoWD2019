@@ -3,7 +3,7 @@
 <head>
     <title><?php echo $titleheader; ?></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="yoga.css">
+    <link rel="stylesheet" href="yoga.min.css">
 </head>
 <body>
 <header>

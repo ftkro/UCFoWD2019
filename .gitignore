@@ -10,3 +10,4 @@
 /Compile/yarn.lock
 /Common/
 /**/*.css
+/**/*.map
