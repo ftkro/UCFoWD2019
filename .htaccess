@@ -1,4 +1,4 @@
-Header set Strict-Transport-Security "max-age=3600" env=HTTPS
+Header set Strict-Transport-Security "max-age=86400" env=HTTPS
 SetEnvIf REDIRECT_HTTPS (.*) HTTPS=$1
 RewriteEngine On
 RewriteCond %{HTTPS} off
