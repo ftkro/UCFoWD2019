@@ -13,8 +13,18 @@ var paths = {
 };
 
 // jpg,png,gif画像の圧縮タスク
+function task_pug() {
+    var srcGlob = [process.argv[3] + process.argv[5] + '/*.pug'];
+    var dstGlob = process.argv[3] + process.argv[5];
+    gulp.src(srcGlob)
+        .pipe(plugins.pug())
+        .pipe(plugins.sitemap({
+            siteUrl: 'https://homepages.uc.edu/~fukudato/' + process.argv[5] + '/'
+        }))
+        .pipe(gulp.dest(dstGlob))
+}
 function task_imagemin() {
-    var srcGlob = paths.srcDir + '/**/*.+(jpg|jpeg|png|gif)';
+    var srcGlob = [paths.srcDir + '/**/*.+(jpg|jpeg|png|gif)'];
     var dstGlob = paths.dstDir;
     gulp.src(srcGlob)
         .pipe(plugins.changed(dstGlob))
@@ -39,28 +49,36 @@ function task_imagemin() {
 }
 
 function task_sass() {
-    var srcGlob = process.argv[3] + process.argv[5] + '/**/*.+(scss)';
+    var srcGlob = process.argv[3] + process.argv[5] + '/**/*.scss';
     var dstGlob = process.argv[3] + process.argv[5];
     return gulp.src(srcGlob)
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sass())
+        .pipe(plugins.sass({outputStyle: 'compressed'}))
         .pipe(plugins.csscomb())
         .pipe(plugins.soften(4))
         .pipe(gulp.dest(dstGlob))
         .pipe(plugins.rename({
             suffix: ".min",
         }))
-        .pipe(plugins.minifyCss({advanced: false}))
+        .pipe(plugins.minifyCss())
         .pipe(plugins.sourcemaps.write(dstGlob))
         .pipe(gulp.dest(dstGlob));
 }
 
-function task_js() {
-    var srcGlob = process.argv[3] + process.argv[5] + '/**/*.+(js)';
+function task_coffee() {
+    var srcGlob = process.argv[3] + process.argv[5] + '/**/*.coffee';
     var dstGlob = process.argv[3] + process.argv[5];
     return gulp.src(srcGlob)
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.coffee({bare: true}))
         .pipe(plugins.soften(4))
         .pipe(plugins.jshint())
+        .pipe(gulp.dest(dstGlob))
+        .pipe(plugins.rename({
+            suffix: ".min",
+        }))
+        .pipe(plugins.uglify())
+        .pipe(plugins.sourcemaps.write(dstGlob))
         .pipe(gulp.dest(dstGlob));
 }
 
@@ -74,9 +92,10 @@ function task_upload() {
 }
 
 gulp.task('default', (done) => {
+    task_pug();
     task_imagemin();
     task_sass();
-    task_js();
-    task_upload();
+    task_coffee();
+    //task_upload(); //なんか知らんがバグるので
     done();
 });
