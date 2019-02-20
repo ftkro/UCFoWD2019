@@ -18,11 +18,13 @@ function task_pug() {
     var dstGlob = process.argv[3] + process.argv[5];
     gulp.src(srcGlob)
         .pipe(plugins.pug())
+        .pipe(gulp.dest(dstGlob))
         .pipe(plugins.sitemap({
             siteUrl: 'https://homepages.uc.edu/~fukudato/' + process.argv[5] + '/'
         }))
         .pipe(gulp.dest(dstGlob))
 }
+
 function task_imagemin() {
     var srcGlob = [paths.srcDir + '/**/*.+(jpg|jpeg|png|gif)'];
     var dstGlob = paths.dstDir;

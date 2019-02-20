@@ -1,0 +1,34 @@
+block vars
+    - var LabNo=3
+doctype
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        link(rel="stylesheet" href="yoga.min.css")
+        title #{title_header}
+    body
+        header
+            h1 #{title}
+        nav
+            a(href="index.html") Home
+            | &nbsp;
+            a(href="classes.html") Classes
+            | &nbsp;
+            a(href="schedule.html") Schedule
+            | &nbsp;
+            a(href="contact.html") Contact
+        main
+            case sub
+                when "Find Your Inner Light"
+                    img(src="../Common/img/yogadoor.jpg" alt="Yoga door" width="225" height="300" class="align-right")
+                when "Yoga Classes"
+                    img(src="../Common/img/yogamat.jpg" alt="Yoga mat" width="900" height="300")
+                when "Yoga Schedule"
+                    img(src="../Common/img/yogalounge.jpg" alt="Yoga lounge" width="900" height="300")
+            h2 #{sub}
+            block content
+            br
+        footer
+            | Copyright &copy; Path of Light Yoga Studio
+            br
+            | This page was created by Takuro Fukuda for IT2040, Spring 2019, Lab#{LabNo}
