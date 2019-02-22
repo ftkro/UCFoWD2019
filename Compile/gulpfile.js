@@ -81,9 +81,9 @@ function task_coffee() {
         }))
         .pipe(plugins.uglify())
         .pipe(plugins.sourcemaps.write(dstGlob))
-        .pipe(gulp.dest(dstGlob));
+        .pipe(gulp.dest(dstGlob))
+        .pipe(plugins.wait(5000));
 }
-
 function task_upload() {
     return gulp.src(process.argv[3] + process.argv[5] + '/**/*')
         .pipe(plugins.sftpUp4({
@@ -98,6 +98,6 @@ gulp.task('default', (done) => {
     task_imagemin();
     task_sass();
     task_coffee();
-    //task_upload(); //なんか知らんがバグるので
+    task_upload(); //なんか知らんがバグるので
     done();
 });
