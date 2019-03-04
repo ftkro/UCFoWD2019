@@ -59,6 +59,7 @@ class ScreenShot
                 && preg_match('@^https?+://@i', $Links->getAttribute("href"))) {
                 $handle = curl_init($Links->getAttribute("href"));
                 curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+                curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
                 /* Get the HTML or whatever is linked in $url. */
                 curl_exec($handle);
                 $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
@@ -113,7 +114,7 @@ class ScreenShot
                 $this->Driver->findElement(WebDriverBy::cssSelector("#uri"))->sendKeys("$Link");
                 $this->Driver->findElement(WebDriverBy::xpath("//*[@id=\"validate-by-uri\"]/form/p[3]/label/a"))->click();
                 if (count($this->Driver->findElements(WebDriverBy::id("congrats"))) === 0) {
-                    die("Validation Failed on: $Link. Please visit W3C CSS Validator for the details. Exiting.");
+                    die("Validation Failed on: $Link. Please visit W3C CSS Validator for the details. Exiting.\n");
                 }
                 $this->Driver->takeScreenshot("working/CSS-${argv[1]}-" . basename($Link, ".css") . ".png");
             }
@@ -127,6 +128,9 @@ class ScreenShot
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $phpWord->getCompatibility()->setOoxmlVersion(15);
         $section = $phpWord->addSection();
+        if (!is_countable($this->LinkList)) {
+            echo "Maybe server cert setting or something wrong. Exiting. \n";
+        }
         if (count($this->CSSList) > 0) {
             foreach ($this->LinkList as $item) {
                 $text .= $item . "\n";

@@ -82,10 +82,10 @@ function task_coffee() {
         .pipe(plugins.uglify())
         .pipe(plugins.sourcemaps.write(dstGlob))
         .pipe(gulp.dest(dstGlob))
-        .pipe(plugins.wait(5000));
 }
 function task_upload() {
     return gulp.src(process.argv[3] + process.argv[5] + '/**/*')
+        .pipe(plugins.wait(5000))
         .pipe(plugins.sftpUp4({
             host: 'ucfilespace.uc.edu',
             user: "fukudato",
@@ -93,11 +93,23 @@ function task_upload() {
         }));
 }
 
-gulp.task('default', (done) => {
+function task_imgupload() {
+    var srcGlob = [paths.srcDir + '/**/*.+(jpg|jpeg|png|gif|ico|svg)'];
+    var dstGlob = paths.dstDir;
+    return gulp.src(srcGlob)
+        .pipe(plugins.wait(5000))
+        .pipe(plugins.changed(dstGlob))
+        .pipe(plugins.sftpUp4({
+            host: 'ucfilespace.uc.edu',
+            user: "fukudato",
+            remotePath: "/Volumes/UCFSsan31/Users/f/fukudato/Sites/Common/img"
+        }));
+}
+
+gulp.task('default', gulp.series((done) => {
     task_pug();
     task_imagemin();
     task_sass();
     task_coffee();
-    task_upload(); //なんか知らんがバグるので
     done();
-});
+}));

@@ -1,0 +1,125 @@
+$Purple: #3F2860;
+$CommonDir: '../Common/img/';
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $Purple;
+  font-family: Verdana, Arial, sans-serif;
+  color: #3F2860;
+}
+
+#wrapper {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: $Purple;
+  background-color: #F5F5F5;
+  min-width: 550px;
+  max-width: 1280px;
+}
+
+header {
+  font-weight: bold;
+  background-color: #9BC1C2;
+  background-image: url(#{$CommonDir}lilyheader.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 150px;
+}
+
+.floatleft {
+  float: left;
+  margin-right: 4em;
+}
+
+%cb {
+  clear: both;
+}
+
+.clear {
+  @extend %cb;
+}
+
+nav {
+  text-align: center;
+  float: left;
+  width: 190px;
+  padding: 1em;
+
+  a {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    border: solid 3px #CCCCCC;
+    padding: 1em;
+    margin-bottom: 1em;
+    text-decoration: none;
+
+    &:link {
+      color: #3F2860;
+    }
+
+    &:visited {
+      color: #497777;
+    }
+
+    &:hover {
+      color: #A26100;
+      border: solid 3px #333333;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.2em;
+  }
+}
+
+main {
+  padding: 0 3em 3em 3em;
+  margin-left: 170px;
+  display: block;
+}
+
+%bgImg {
+  height: 300px;
+  background-size: 100% 100%;
+}
+
+#mathero {
+  @extend %bgImg;
+  background-image: url(#{$CommonDir}yogamat.jpg);
+}
+
+#loungehero {
+  @extend %bgImg;
+  background-image: url(#{$CommonDir}yogalounge.jpg);
+}
+
+h1 {
+  padding-top: 50px;
+  padding-left: 2em;
+}
+
+footer {
+  font-size: small;
+  text-align: center;
+  font-style: italic;
+  background-color: #9BC1C2;
+  padding: 1em;
+}
+
+li {
+  font-size: 90%;
+}
+
+.align-right {
+  float: right;
+
+  &::after {
+    @extend %cb;
+  }
+}
